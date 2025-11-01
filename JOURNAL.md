@@ -19,16 +19,16 @@ I prototyped the servo mount and upper linkage (_femur_) for the **MG996R Hi Tor
 
   
 
-## 10/31/2025 - Improved Tibia Part  
+## 10/31/2025 - Improved Femur Part  
 
 Today, I reiterated on the femur design, **majorly** improving both the **structural aspects**, **functionality** (added room for the second room for controlling the tibia), and the technical side of my **CAD software**, Fusion 360, by assigning more variables for redundant values, using appropriate joints, etc. I think I did a good job of working out the screw tolerances to mount the servo motor to the femur shell. However I think I can work on the strength of the part, as there seems to be some excess support where not need and lack of support for other, more critical areas (mounting holes, pivot points, etc.). Next I plan to work on finally finishing a prototype for the entire leg and get started on a list of electronics for my custom PCB. Stay tuned!
 
-Improved Tibia Part (**Side View**)
+Improved Femur Part (**Side View**)
 
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzMywicHVyIjoiYmxvYl9pZCJ9fQ==--26824ab80d14672797a7f791dca01a615afbb42c/image.png)
 
 
-Improved Tibia part (**Rendered**)
+Improved Femur part (**Rendered**)
 
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--b48e252f321dcfa1556bb2e9c987c9ef5d22f166/image.png)
   
