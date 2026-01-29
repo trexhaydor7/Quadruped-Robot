@@ -31,5 +31,49 @@ Improved Femur Part (**Side View**)
 Improved Femur part (**Rendered**)
 
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--b48e252f321dcfa1556bb2e9c987c9ef5d22f166/image.png)
-  
+
+
+Made a ton of progress on the design, including the two-bar linkage, the tibia, and all the joints in between. I had to modify a lot of the mounting holes and such from the previous design, but looks much cleaner and simpler than before. I also had a bit of trouble with designing the two-bar linkage, but it came out quite well, as shown below, and works pretty well (I'm still ordering parts but I will test out the mechanism soon).
+
+
+**Rendered Photo** 
+
+> ![image](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODUzNDksInB1ciI6ImJsb2JfaWQifX0=--17d0439f3086bf317da6a97204de4bb09074fc3b/image.png)
+
+
+A note to make is that I had to cut little plastic parts off the servo motor mounting holes so that it can mount properly.
+
+_Slightly Modified Motor Below_
+
+> ![IMG_2977](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODUzMzQsInB1ciI6ImJsb2JfaWQifX0=--36bba7bf28d69958fbd4c24cfde6d7b27d347e74/IMG_2977.jpeg)
+
+
+Soon, after I fix some of the problems with the CAD, I will start coding the inverse kinematics. I will start with a geometric approach but in the future will move on to a more complex but reliable numerical method of calculating endpoints. Furthermore, I plan to use the Jetson Orion Nano in the future to actually control the robot, but I think I will start by just using an Arduino or Raspberry Pi for experimentation and prototyping. Will keep you updated on how it goes!
+
+
+R
+**Both Femur and Tibia Reiterated Design!**
+
+> ![IMG_2981](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODUzMzUsInB1ciI6ImJsb2JfaWQifX0=--9a72f7e8242291b393ed72c6f86637e10318d4de/IMG_2981.jpeg)
+
+
+**Tibia Design**
+
+> ![IMG_2980](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODUzMzEsInB1ciI6ImJsb2JfaWQifX0=--a42e3a4c3038bd9109459c6d00a1187ea822217d/IMG_2980.jpeg)
+
+**Femur Top Down View**
+
+> ![IMG_2978](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODUzMzMsInB1ciI6ImJsb2JfaWQifX0=--c913db30e866feda34a17370d9c1ba3995dd6bf2/IMG_2978.jpeg)
+
+
+**Femur Bird's Eye View**
+
+> ![IMG_2979](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODUzMzIsInB1ciI6ImJsb2JfaWQifX0=--22e752100d70318eee0387afd7017755a718b1d0/IMG_2979.jpeg)
+
+
+
+
+
+
+
 
