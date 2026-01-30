@@ -1,0 +1,83 @@
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.widgets import Slider
+import numpy as np
+
+# ===== Robot parameters =====
+L1, L2, L3 = 2.0, 1.5, 1.0  # link lengths
+
+# ===== Forward kinematics =====
+def forward_kinematics(t1, t2, t3):
+    x0, y0, z0 = 0,0,0
+    x1 = L1*np.cos(t1); y1 = L1*np.sin(t1); z1 = 0
+    x2 = x1 + L2*np.cos(t1 + t2); y2 = y1 + L2*np.sin(t1 + t2); z2 = 0
+    x3 = x2 + L3*np.cos(t1 + t2 + t3); y3 = y2 + L3*np.sin(t1 + t2 + t3); z3 = 0
+    return [x0, x1, x2, x3], [y0, y1, y2, y3], [z0, z1, z2, z3]
+
+# ===== Simple planar IK =====
+def inverse_kinematics(x_target, y_target):
+    r = np.hypot(x_target, y_target)
+    cos_t2 = (r**2 - L1**2 - L2**2)/(2*L1*L2)
+    cos_t2 = np.clip(cos_t2, -1, 1)
+    t2 = np.arccos(cos_t2)
+    k1 = L1 + L2*np.cos(t2)
+    k2 = L2*np.sin(t2)
+    t1 = np.arctan2(y_target, x_target) - np.arctan2(k2, k1)
+    t3 = 0  # optional, for simplicity
+    return t1, t2, t3
+
+# ===== Initial target and angles =====
+x_target, y_target = 3.0, 1.0
+theta1, theta2, theta3 = inverse_kinematics(x_target, y_target)
+
+# ===== Create figure =====
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+plt.subplots_adjust(left=0.25, bottom=0.25)
+
+# ===== Initial arm plot =====
+x, y, z = forward_kinematics(theta1, theta2, theta3)
+arm_line, = ax.plot(x, y, z, 'o-', linewidth=3, color='blue')
+target_point, = ax.plot([x_target], [y_target], [0], 'rx', markersize=10, label='Target')
+
+ax.set_xlim([-5,5]); ax.set_ylim([-5,5]); ax.set_zlim([-1,1])
+ax.set_xlabel('X'); ax.set_ylabel('Y'); ax.set_zlabel('Z')
+ax.legend()
+
+# ===== Sliders for joint angles =====
+axcolor = 'lightgoldenrodyellow'
+ax1 = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+ax2 = plt.axes([0.25, 0.05, 0.65, 0.03], facecolor=axcolor)
+ax3 = plt.axes([0.25, 0.0, 0.65, 0.03], facecolor=axcolor)
+
+s1 = Slider(ax1, 'Theta1', -np.pi, np.pi, valinit=theta1)
+s2 = Slider(ax2, 'Theta2', -np.pi, np.pi, valinit=theta2)
+s3 = Slider(ax3, 'Theta3', -np.pi, np.pi, valinit=theta3)
+
+# ===== Slider update function =====
+def update(val):
+    t1, t2, t3 = s1.val, s2.val, s3.val
+    x, y, z = forward_kinematics(t1, t2, t3)
+    arm_line.set_data(x, y)
+    arm_line.set_3d_properties(z)
+    fig.canvas.draw_idle()
+
+s1.on_changed(update)
+s2.on_changed(update)
+s3.on_changed(update)
+
+# ===== Click-to-move target =====
+def onclick(event):
+    if event.inaxes == ax:
+        global x_target, y_target
+        x_target, y_target = event.xdata, event.ydata
+        t1, t2, t3 = inverse_kinematics(x_target, y_target)
+        s1.set_val(t1); s2.set_val(t2); s3.set_val(t3)
+        target_point.set_data([x_target], [y_target])
+        target_point.set_3d_properties([0])
+        fig.canvas.draw_idle()
+
+fig.canvas.mpl_connect('button_press_event', onclick)
+
+plt.show()
